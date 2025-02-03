@@ -3,21 +3,24 @@
 
 .hero
     margin-top: 6em
+    margin-bottom: 6em
     @media all and (max-width: $content_width + $padding_sm)
         padding: $padding_sm 
     @media all and (max-width: $mobile_width)
         margin-top: 3em
+        margin-bottom: 3em
 .hero-title
     font-size: 2.75em
     color: $color_black
     &_colored
         color: $color_teal
     &_gradiented
-        background: linear-gradient(to right, $color_black 0%, $color_black 22.9%, $color_grey 23%, $color_grey 100%)
-        -webkit-background-clip: text
-        background-clip: text
-        color: transparent
-        -webkit-text-fill-color: transparent
+        @media all and (min-width: $mobile_width + 1px)
+            background: linear-gradient(to right, $color_black 0%, $color_black 22.9%, $color_grey 23%, $color_grey 100%)
+            -webkit-background-clip: text
+            background-clip: text
+            color: transparent
+            -webkit-text-fill-color: transparent
 
 .hero-content__title
     margin-bottom: 1.6rem
@@ -79,6 +82,7 @@
         width: fit-content
         cursor: pointer
         border: none
+        font-size: .7em
         
                 
 
