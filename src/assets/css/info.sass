@@ -10,7 +10,8 @@
     @media all and (max-width: $mobile_width)
         padding-top: 3.5em
         padding-bottom: 3.5em
-
+        background: $color_cyan_light
+     
 .info-content
     
     max-width: $content_width
@@ -115,3 +116,29 @@
 
 		
 
+.info-slider
+    .info-card
+        background-color: #ffffff
+        border-radius: 1em
+        flex-direction: column
+        padding: 2em
+        min-height: 20em
+        &__title
+            font-size: 1.17em
+            color: $color_teal
+            margin-top: .8em
+            margin-bottom: .8em
+        &__description
+            font-size: .888em
+            color: $color_haki
+            line-height: 1.4
+            overflow-x: hidden
+            overflow-y: auto
+        &__img
+            max-width: 100%
+
+
+
+.info-pagination
+    position: relative !important
+    margin-top: 1em

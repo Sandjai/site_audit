@@ -23,6 +23,7 @@
         align-items: center
         column-gap: 1.5em
         box-sizing: border-box
+        
 
         @media all and (max-width: $mobile_width)
             position: fixed
@@ -37,6 +38,7 @@
             flex-direction: column
             justify-content: space-between
             align-items: center
+            z-index: 9
             &.active
                 transform: translateX(0)
 
@@ -129,6 +131,7 @@
     z-index: 2
     overflow: hidden
     margin-right: $padding_sm
+    z-index: 10
     & > .bar
         width: 30px
         height: 4px
