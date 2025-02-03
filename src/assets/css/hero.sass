@@ -1,0 +1,36 @@
+@import './variables.sass'
+@import './fonts.sass'
+
+.hero
+    @media all and (max-width: $content_width + $padding_sm)
+        padding: $padding_sm 
+
+.hero-title
+    font-size: 2.75em
+    background: linear-gradient(to right, $color_black 0%, $color_black 33.9%, $color_teal 34%, $color_teal 75%, $color_black 75.9%, $color_black 100%)
+    -webkit-background-clip: text
+    background-clip: text
+    color: transparent
+    -webkit-text-fill-color: transparent
+
+.hero-content__title
+    margin-bottom: 1.6rem
+    
+.hero-subtitle
+    font-size: .9em
+    color: $color_black_light
+.hero-content 
+    
+    display: flex
+    flex-wrap: wrap
+    width: 100%
+    &__text
+        padding: 2em 2em 0 0        
+    &__text, &__slider
+        flex: 0 0 50%
+        box-sizing: border-box
+    // &__slider
+
+.hero-slider__slide
+    img
+        max-width: 100%

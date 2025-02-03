@@ -1,0 +1,162 @@
+@import './variables.sass'
+@import './fonts.sass'
+
+.header-content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    column-gap: 5.35em
+    max-width: $content_width
+    margin: 0 auto
+    height: 100%
+
+    .header-logo 
+        width: 8.1em
+    @media all and (max-width: $content_width + $padding_sm)
+                    margin-left: $padding_sm
+                    column-gap: 3vw
+
+    .header-menu
+        display: flex
+        width: 100%
+        justify-content: space-between
+        align-items: center
+        column-gap: 1.5em
+        box-sizing: border-box
+
+        @media all and (max-width: $mobile_width)
+            position: fixed
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            padding: 15px
+            background: $color_cyan_light
+            transform: translateX(100%)
+            transition: transform 0.5s ease
+            flex-direction: column
+            justify-content: space-between
+            align-items: center
+            &.active
+                transform: translateX(0)
+
+        .header-btns
+            display: inline-flex
+            column-gap: min(2.5vw, 2.5em)
+            row-gap: 1.5em
+            align-items: center
+            @media all and (max-width: $mobile_width)
+                flex-direction: column
+
+            &__tel
+                color: $color_rhino
+                font-size: .7em
+                white-space: nowrap
+                text-decoration: none                
+
+            &__login
+                border: 1px solid $color_black_light
+                border-radius: 50px
+                color: $color_black_light
+                text-transform: capitalize
+                background-color: $color_white
+                line-height: 1.8
+                padding: 0 .75em
+                font-size: .7em
+                font-family: "Onest", sans-serif
+                cursor: pointer
+                transition: background-color .3s ease, color .3s ease
+                &:hover
+                    background-color: $color_black_light
+                    color: $color_white
+                @media all and (max-width: $content_width + $padding_sm)
+                    margin-right: $padding_sm
+            
+            &__tel, &__login
+                @media all and (max-width: $mobile_width)
+                    font-size: 1.2em
+
+        .header-nav    
+            position: relative
+            .header-list 
+                display: inline-flex
+                column-gap: 1em
+                list-style: none
+                padding: 0
+                margin: 0
+
+                @media all and (max-width: $mobile_width)
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+
+                .header-list__item
+                    position: relative
+                    white-space: nowrap
+                    font-size: .7em        
+                    text-transform: capitalize
+                    padding: 1.8em 0
+                    cursor: pointer
+                    @media all and (max-width: $mobile_width)
+                        font-size: 1.2em
+                        padding: 1em 0
+                    a
+                        text-decoration: none
+                        color: $color_rhino
+                    &.header-nav-item_active::after, &:not(.header-nav-item_active):hover::after
+                        content: ''
+                        position: absolute
+                        bottom: 0
+                        background-color: $color_teal
+                        height: 4px
+                        width: 100%
+                        left: 0
+                        @media all and (max-width: $mobile_width)
+                            height: 2px
+                    &:not(.header-nav-item_active):hover::after                     
+                        animation: fadeIn .3s forwards
+                        
+@keyframes fadeIn 
+    0% 
+        opacity: 0
+    100%
+        opacity: .5
+
+.hamburger-btn
+    width: 30px
+    height: 30px
+    position: relative
+    z-index: 2
+    overflow: hidden
+    margin-right: $padding_sm
+    & > .bar
+        width: 30px
+        height: 4px
+        position: absolute
+        top: 50%
+        left: 50%
+        border-radius: 4px
+        transform: translate(-50%, -50%)
+        background-color: $color_steel
+        transition: all 0.3s ease-in-out
+
+    & > .bar:nth-of-type(2) 
+        top: calc(50% - 9px)
+
+    & > .bar:nth-of-type(3)
+        top: calc(50% + 9px)
+
+    &.active > .bar:nth-of-type(1)
+        display: none
+
+    &.active .bar:nth-of-type(2)
+        top: 50%
+        transform: translate(-50%, 0%) rotate(45deg)
+
+    &.active .bar:nth-of-type(3)
+        top: 50%
+        transform: translate(-50%, 0%) rotate(-45deg)
+
+
+
+
