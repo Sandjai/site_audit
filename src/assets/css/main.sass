@@ -49,6 +49,8 @@ main
     height: 5.55em
     display: flex
     align-items: center
+    @media all and (max-width: $mobile_width)
+        height: fit-content
 
 .hidden-on-desktop
     @media all and (min-width: $mobile_width + .9px)
