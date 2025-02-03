@@ -2,16 +2,22 @@
 @import './fonts.sass'
 
 .hero
+    margin-top: 6em
     @media all and (max-width: $content_width + $padding_sm)
         padding: $padding_sm 
-
+    @media all and (max-width: $mobile_width)
+        margin-top: 3em
 .hero-title
     font-size: 2.75em
-    background: linear-gradient(to right, $color_black 0%, $color_black 33.9%, $color_teal 34%, $color_teal 75%, $color_black 75.9%, $color_black 100%)
-    -webkit-background-clip: text
-    background-clip: text
-    color: transparent
-    -webkit-text-fill-color: transparent
+    color: $color_black
+    &_colored
+        color: $color_teal
+    &_gradiented
+        background: linear-gradient(to right, $color_black 0%, $color_black 22.9%, $color_grey 23%, $color_grey 100%)
+        -webkit-background-clip: text
+        background-clip: text
+        color: transparent
+        -webkit-text-fill-color: transparent
 
 .hero-content__title
     margin-bottom: 1.6rem
@@ -19,18 +25,64 @@
 .hero-subtitle
     font-size: .9em
     color: $color_black_light
-.hero-content 
-    
+
+.hero-content
     display: flex
     flex-wrap: wrap
     width: 100%
+    @media all and (max-width: $mobile_width)
+        flex-direction: column
+        row-gap: 2em
     &__text
-        padding: 2em 2em 0 0        
-    &__text, &__slider
+        padding: 2em 2.45em 0 0
+        line-height: 1.5
+    &__slides
+        position: relative
+        display: grid
+        grid-template: 1fr/repeat(3, 1fr)
+        .hero-slide
+            width: 250%
+            position: relative
+           
+            // position: absolute
+            // bottom: 0
+            // left: 0
+            // animation-duration: 0.5s
+            // animation-timing-function: ease-in-out
+            // animation-fill-mode: forwards
+            img
+                max-width: 100%
+                border-radius: 1em
+            &:first-child
+                z-index: 4
+            &:nth-child(2)
+                z-index: 3
+                
+            &:nth-child(3)
+                z-index: 2
+        .hero-slide_1            
+            margin-top: 40%
+        .hero-slide_2
+            margin-left: -70%
+            margin-top: 20%
+        .hero-slide_3
+            margin-left: -140%      
+
+    &__btn
+        margin-top: 1.6em
+    .hero-btn
+        background-color: $color_black_light
+        border-radius: 50px
+        color: $color_white
+        line-height: 2
+        padding: 0 .8em
+        width: fit-content
+        cursor: pointer
+                
+
+    &__text, &__slides
         flex: 0 0 50%
         box-sizing: border-box
-    // &__slider
 
-.hero-slider__slide
-    img
-        max-width: 100%
+
+    
