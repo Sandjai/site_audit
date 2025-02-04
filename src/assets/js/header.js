@@ -17,9 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.querySelector('.js-hamburger');
   const menu = document.querySelector('.js-header-menu');
 
-  hamburgerBtn.addEventListener('click', function () {
+  hamburgerBtn.addEventListener('click', () => {
+    toggleMenuHamburger();
+
+    if (hamburgerBtn.classList.contains('active')) {
+      menu.addEventListener('click', onClickMenu);
+    } else {
+      menu.removeEventListener('click', onClickMenu);
+    }
+  });
+
+  function onClickMenu(e) {
+    const target = e.target;
+
+    if (target.classList.contains('js-header-menu-item')) {
+      toggleMenuHamburger();
+      menu.removeEventListener('click', onClickMenu);
+    }
+  }
+
+  function toggleMenuHamburger() {
     hamburgerBtn.classList.toggle('active');
     menu.classList.toggle('active');
     menu.classList.toggle('hidden-on-mobile');
-  });
+
+    if (hamburgerBtn.classList.contains('active')) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }
 });

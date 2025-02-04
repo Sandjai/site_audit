@@ -51,22 +51,23 @@ export default defineConfig(({ mode }) => {
         // }
       })
     ],
+    base: mode === 'production' ? '/site_audit/' : '/', // Префикс для продакшена
     build: {
       rollupOptions: {
         // Указываем точку входа для отдельных файлов
         input: {
           main: '/index.html',
-          swiper: '/src/assets/js/swiper-bundle.min.js',
+          // swiper: '/src/assets/js/swiper-bundle.min.js',
         },
-        output: {
-          // Разделение файлов: основной бандл и отдельные файлы
-          manualChunks(id) {
-            if (id.includes('swiper-bundle.min.js')) {
-              return 'separate';
-            }
-            return null; // Остальные файлы попадают в основной бандл
-          },
-        },
+        // output: {
+        //   // Разделение файлов: основной бандл и отдельные файлы
+        //   manualChunks(id) {
+        //     if (id.includes('swiper-bundle.min.js')) {
+        //       return 'separate';
+        //     }
+        //     return null; // Остальные файлы попадают в основной бандл
+        //   },
+        // },
       },
     },
     resolve: {
