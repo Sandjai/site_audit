@@ -5,12 +5,12 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import injectHTML from 'vite-plugin-html-inject';
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+  // const env = loadEnv(mode, process.cwd(), '');
   return {
-    define: {
-      'process.env.BACKEND_URL': JSON.stringify(env.BACKEND_URL)
+    // define: {
+    //   'process.env.BACKEND_URL': JSON.stringify(env.BACKEND_URL)
       //__APP_ENV__: JSON.stringify(env.APP_ENV)
-    },
+    // },
     plugins: [
       Inspect(),
       injectHTML(),
@@ -37,20 +37,38 @@ export default defineConfig(({ mode }) => {
         // inject: {
         //   data: {
         //     title: 'index',
-        //     injectScript: `<script src="./inject.js"></script>`
+        //     injectScript: ``
         //   },
-        //   tags: [
-        //     {
-        //       injectTo: 'body-prepend',
-        //       tag: 'div',
-        //       attrs: {
-        //         id: 'tag'
-        //       }
-        //     }
-        //   ]
+          // tags: [
+          //   {
+          //     injectTo: 'body-prepend',
+          //     tag: 'div',
+          //     attrs: {
+          //       id: 'tag'
+          //     }
+          //   }
+          // ]
         // }
       })
     ],
+    build: {
+      rollupOptions: {
+        // Указываем точку входа для отдельных файлов
+        input: {
+          main: '/index.html',
+          swiper: '/src/assets/js/swiper-bundle.min.js',
+        },
+        output: {
+          // Разделение файлов: основной бандл и отдельные файлы
+          manualChunks(id) {
+            if (id.includes('swiper-bundle.min.js')) {
+              return 'separate';
+            }
+            return null; // Остальные файлы попадают в основной бандл
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname) + '/src/assets/'
