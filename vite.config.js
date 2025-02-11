@@ -9,13 +9,13 @@ export default defineConfig(({ mode }) => {
   return {
     // define: {
     //   'process.env.BACKEND_URL': JSON.stringify(env.BACKEND_URL)
-      //__APP_ENV__: JSON.stringify(env.APP_ENV)
+    //__APP_ENV__: JSON.stringify(env.APP_ENV)
     // },
     plugins: [
       Inspect(),
       injectHTML(),
       createHtmlPlugin({
-        minify: true,
+        minify: true
         /**
          * After writing entry here, you will not need to add script tags in `index.html`, the original tags need to be deleted
          * @default src/main.ts
@@ -39,26 +39,27 @@ export default defineConfig(({ mode }) => {
         //     title: 'index',
         //     injectScript: ``
         //   },
-          // tags: [
-          //   {
-          //     injectTo: 'body-prepend',
-          //     tag: 'div',
-          //     attrs: {
-          //       id: 'tag'
-          //     }
-          //   }
-          // ]
+        // tags: [
+        //   {
+        //     injectTo: 'body-prepend',
+        //     tag: 'div',
+        //     attrs: {
+        //       id: 'tag'
+        //     }
+        //   }
+        // ]
         // }
       })
     ],
-    base: mode === 'production' ? '/site_audit/' : '/', // Префикс для продакшена
+    // !Заменить/Оставить пустым  Префикс для 'production' в зависимости от места развёртывания (/site_audit/ для gH Pages)
+    base: mode === 'production' ? '/site_audit/' : '/',
     build: {
       rollupOptions: {
         // Указываем точку входа для отдельных файлов
         input: {
-          main: '/index.html',
+          main: '/index.html'
           // swiper: '/src/assets/js/swiper-bundle.min.js',
-        },
+        }
         // output: {
         //   // Разделение файлов: основной бандл и отдельные файлы
         //   manualChunks(id) {
@@ -68,7 +69,7 @@ export default defineConfig(({ mode }) => {
         //     return null; // Остальные файлы попадают в основной бандл
         //   },
         // },
-      },
+      }
     },
     resolve: {
       alias: {

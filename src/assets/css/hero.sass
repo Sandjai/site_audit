@@ -39,6 +39,8 @@
     &__text
         padding: .2em 2.45em 0 0
         line-height: 1.5
+        @media all and (max-width: $mobile_width)
+            padding: .2em 0 0 0
     &__slides
         position: relative
         display: grid
@@ -49,6 +51,7 @@
             img
                 max-width: 100%
                 border-radius: 1em
+                height: auto
             &:first-child
                 z-index: 4
             &:nth-child(2)
@@ -58,11 +61,17 @@
                 z-index: 2
         .hero-slide_1            
             margin-top: 40%
+            @media all and (max-width: $mobile_width) and (min-width: $middle_width)
+                margin-left: 20%
         .hero-slide_2
             margin-left: -70%
             margin-top: 20%
+            @media all and (max-width: $mobile_width) and (min-width: $middle_width)
+                margin-left: -50%
         .hero-slide_3
             margin-left: -140%
+            @media all and (max-width: $mobile_width) and (min-width: $middle_width)
+                margin-left: -120%
 
     &__btn
         margin-top: 1.6em
